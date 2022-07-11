@@ -11,7 +11,7 @@ export class ProductItemComponent implements OnInit {
   @Input() product:any
 
   constructor(private service:CartService,private route:Router) { }
-  userId:1000;
+  useridofloggeduser:any;
   datas:any;
   display="none";
   
@@ -28,10 +28,15 @@ export class ProductItemComponent implements OnInit {
   }
 
   AddProdtoCart(ProductId:number):void{
-    
-    this.service.AddCart(ProductId,1000).subscribe(data=>{
+    if(sessionStorage.getItem("UserId")!=undefined){
+    this.useridofloggeduser=sessionStorage.getItem("UserId");
+    this.service.AddCart(ProductId,this.useridofloggeduser).subscribe(data=>{
       console.log(data);
       this.datas=data.result;
       })
   }
+  else{
+    this.route.navigateByUrl("login");
+  }
+}
 }

@@ -82,9 +82,10 @@ export class UserService {
     return throwError(() => new Error('Something bad happened; please try again later.'));
   }
 
-  logout(id:string):any{
+  logout(id:string):Observable<string> {
     console.log("Logout called in User service");
-    return this.http.head(this.url + id).pipe(catchError(this.handleError));
+    console.log(this.url +"Logout/"+ id);
+    return this.http.get(this.url + "Logout/"+ id,{responseType:'text'});
   }
-
+  
 }

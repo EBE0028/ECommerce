@@ -1,8 +1,9 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 
 
 import { CartService } from '../cart.service';
+import { NavBarComponent } from '../core/nav-bar/nav-bar.component';
 import { ShopService } from '../shop/shop.service';
 
 
@@ -21,11 +22,12 @@ export class HomeComponent implements OnInit {
   constructor(private router:Router, private service:CartService,private store:ShopService) { }
 
   ngOnInit(): void {
+    // @ViewChild(nav)NavBarComponent=NavBarComponent
     this.store.getProducts().subscribe(data=>{
+
       this.Product=data;
       this.Product2=this.Product.slice(-5,-1);
       sessionStorage.setItem("sample",'starting');
-     
     });
   }
 

@@ -24,8 +24,14 @@ export class LoginComponent implements OnInit {
   
 
   ngOnInit(): void {
+    
+    if(sessionStorage.getItem("UserId")!=undefined){
+      this.redirectDashboard();
+
+    }
     if(sessionStorage.getItem("show")=="1"){
       this.show = true;
+      
     }
     else{
       this.show = false;
@@ -41,30 +47,28 @@ export class LoginComponent implements OnInit {
       this.loginResponse=response;
       console.log(this.loginResponse);
       
-       if(this.loginResponse.length == 5){
+       if(this.loginResponse.length == 4){
         console.log("Valid credentials");
         this.server.isLoggedIn = true;
         sessionStorage.setItem("isLoggedIn", "true");
         sessionStorage.setItem("UserId", this.loginResponse);
-        sessionStorage.setItem("response", "success");
-        sessionStorage.setItem("attempts", "0");
+        location.reload();
       }
-      console.log(this.loginResponse);
-      sessionStorage.setItem("response", this.loginResponse);
-      
-      // location.reload();
-      // this.redirectDashboard();
-      sessionStorage.setItem("show", "1");
-      this.redirectDashboard();
+      else{
+        sessionStorage.setItem("show","1");
+        sessionStorage.setItem("response",this.loginResponse);
+        location.reload();
+      }
+     
     });
   }
 
   redirectDashboard():void{
-    if(sessionStorage.getItem("response")=="success"){
+    console.log(sessionStorage.getItem("UserId"))
+    if(sessionStorage.getItem("UserId")!=undefined){
       this.route.navigateByUrl("Home");
     }
   }
-
   closeToast(){
     sessionStorage.setItem("show", "0");
     location.reload();

@@ -17,12 +17,17 @@ product:any;
 count:number=0;
 private loading: boolean=false;
 
-  constructor(public service:CartService ) { 
+  constructor(public service:CartService,private route:Router ) { 
   }
 
   ngOnInit(): void {
-    this.service.iscart=true;
-    this.getCartProduct();
+    if(sessionStorage.getItem("UserId")!=undefined){
+      this.service.iscart=true;
+      this.getCartProduct();
+    }
+    else{
+      this.route.navigateByUrl("login");
+    }
 }
 getCartProduct()
 {

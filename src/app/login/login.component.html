@@ -62,7 +62,7 @@
   </div>
   
   
-  <div class="border border-dark" style="position:fixed;right:1%;top:1%;" *ngIf="show==true">
+  <div class="border border-dark" style="position:fixed;right:50%;top:50%;z-index:1;" *ngIf="show==true">
     <div class="toast-header" style="color: blueviolet;">
       <i class="bi bi-bell"></i>
       <strong class="me-auto"> Message </strong>
@@ -77,8 +77,6 @@
       <p class="text-info" *ngIf="loginResponse=='deleted'">You are no longer a user. For more info contact administrator.</p>
     </div>
   </div>
-  
-  
   
   
   <div class="border border-dark bg-light opacity-75" style="position:fixed;left:0%;top:0%;height: 100%;width: 100%;" *ngIf="forgotpassword || readotp || changepassword">

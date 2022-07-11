@@ -12,7 +12,10 @@
             <i class="fa fa-shopping-cart fa-2x mr-5 text-dark"  routerLink="/Cart"></i>
             <!-- <div class="cart-no">{{basket$}}</div> -->
         </a>
-        <a class="btn btn-outline-secondary mr-2" href="#">Login</a>
-        <a class="btn btn-outline-secondary mr-3" href="#">Sign up</a>
+
+        <a class="btn btn-outline-secondary mr-2" (click)="logout()" *ngIf="!loggedInUser">Logout</a>
+        <a class="btn btn-outline-secondary mr-2" routerLink="/login" *ngIf="loggedInUser">Login</a>
+        
+        <a class="btn btn-outline-secondary mr-3" routerLink="/register" *ngIf="loggedInUser">Sign up</a>
     </div>
 </header> 

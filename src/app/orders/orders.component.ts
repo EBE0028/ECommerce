@@ -15,7 +15,7 @@ export class OrdersComponent implements OnInit {
   images:any;
   orderon:string="7/7/2022";
   flag:boolean=false;
-  constructor(private service:OrderAPIService) { }
+  constructor(private service:OrderAPIService,private route:Router) { }
   
 
   
@@ -25,10 +25,14 @@ export class OrdersComponent implements OnInit {
     
   }
   ngOnInit(): void {
+    if(sessionStorage.getItem("UserId")!=undefined){
     let resp=this.service.getProducts();
     resp.subscribe((data)=>
       this.orders=data);
-    
+    }
+    else{
+      this.route.navigateByUrl("login");
+    }
     
     
   }

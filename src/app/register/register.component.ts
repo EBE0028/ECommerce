@@ -17,8 +17,11 @@ export class RegisterComponent implements OnInit {
   constructor(public server:UserService, private route:Router) { }
 
   ngOnInit(): void {
+    if(sessionStorage.getItem("UserId")!=undefined){
+      this.route.navigateByUrl("Home");
+    }
   }
-
+  
   addUser():any{
     this.server.pushUser(this.user).subscribe(response=>{
       this.newUser = response;
