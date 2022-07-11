@@ -24,7 +24,7 @@ export class LoginComponent implements OnInit {
   
 
   ngOnInit(): void {
-    
+    console.log(sessionStorage.getItem("response"));
     if(sessionStorage.getItem("UserId")!=undefined){
       this.redirectDashboard();
 

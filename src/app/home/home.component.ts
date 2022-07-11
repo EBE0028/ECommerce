@@ -15,6 +15,7 @@ import { ShopService } from '../shop/shop.service';
 export class HomeComponent implements OnInit {
   
   Product:any;
+  useridofloggeduser:any;
   Product2:any[]=[];
   datas:any;
   display: string="none";
@@ -24,7 +25,6 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     // @ViewChild(nav)NavBarComponent=NavBarComponent
     this.store.getProducts().subscribe(data=>{
-
       this.Product=data;
       this.Product2=this.Product.slice(-5,-1);
       sessionStorage.setItem("sample",'starting');
@@ -32,12 +32,17 @@ export class HomeComponent implements OnInit {
   }
 
   AddProdtoCart(ProductId:number):void{
-    
-    this.service.AddCart(ProductId,1000).subscribe(data=>{
+    if(sessionStorage.getItem("UserId")!=undefined){
+      this.useridofloggeduser=sessionStorage.getItem("UserId");
+    this.service.AddCart(ProductId,this.useridofloggeduser).subscribe(data=>{
       console.log("this is product data "+data);
       this.datas=data.result;
       })
   }
+  else{
+    this.router.navigateByUrl("login");
+  }
+}
 
   openModal() {
     this.display = "block";

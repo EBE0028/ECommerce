@@ -31,7 +31,7 @@ private loading: boolean=false;
 }
 getCartProduct()
 {
-  this.service.GetcartforUser(1000).subscribe({
+  this.service.GetcartforUser(sessionStorage.getItem("UserId")).subscribe({
     next:
     (data)=>{
       //Initiate Grandtotal to 0 because Every Time api is hitted it will add all subtotal getting in api
@@ -49,7 +49,7 @@ getCartProduct()
 
 Removeitem(PdtId : number):void{
   this.loading=true
-  this.service.RemoveCartItem(PdtId,1000).subscribe(data=>{
+  this.service.RemoveCartItem(PdtId,Number(sessionStorage.getItem("UserId"))).subscribe(data=>{
     this.loading=true
     console.log(data);
     //If api is hitted succcesfully just recalculate grandtotal and re render new table 

@@ -30,11 +30,12 @@ export class ProductItemComponent implements OnInit {
   AddProdtoCart(ProductId:number):void{
     if(sessionStorage.getItem("UserId")!=undefined){
     this.useridofloggeduser=sessionStorage.getItem("UserId");
-    this.service.AddCart(ProductId,this.useridofloggeduser).subscribe(data=>{
+    this.service.AddCart(ProductId,Number(this.useridofloggeduser)).subscribe(data=>{
       console.log(data);
       this.datas=data.result;
       })
   }
+  
   else{
     this.route.navigateByUrl("login");
   }

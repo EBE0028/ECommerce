@@ -70,10 +70,9 @@
     </div>
     <div class="toast-body">
       <p class="text-danger" *ngIf="loginResponse=='serverdown'">Server is facing some issues. Unable to reach.</p>
-      <p class="text-danger" *ngIf="loginResponse=='invalid'">Wrong MailId or Password. Unsuccessful attempts {{unSuccessAttempts}}</p>
-      <p class="text-danger" *ngIf="loginResponse=='noadmin'">Wrong MailId or Password.</p>
+      <p class="text-danger" *ngIf="loginResponse=='invalid'">Wrong MailId or Password.</p>
+      <p class="text-danger" *ngIf="loginResponse=='nouser'">Wrong MailId or Password.</p>
       <p class="text-warning" *ngIf="loginResponse=='loggedin'">Already logged in another browser.</p>
-      <p class="text-info" *ngIf="loginResponse=='locked'">You are Locked. For more info contact administrator.</p>
       <p class="text-info" *ngIf="loginResponse=='deleted'">You are no longer a user. For more info contact administrator.</p>
     </div>
   </div>
