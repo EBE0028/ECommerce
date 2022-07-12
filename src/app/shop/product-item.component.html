@@ -5,7 +5,7 @@
             <h6 class="text-uppercase" style="color: blueviolet;">{{product.productName}}</h6>
         </a>
         <span class="mb-2">{{product.price | currency:'INR':'symbol-narrow'}}</span>
-
+        
         <div class="btn-group mt-auto">
             <button type="button" class="btn btn-outline-secondary fa fa-shopping-cart mr-2"  (click)="openModal()" (click)="AddProdtoCart(product.productId) "data-toggle="modal" data-target="#exampleModalCenter"></button>
             <button type="button" class="btn btn-outline-secondary" (click)="Viewproddetails(product.productId)" >View</button>
