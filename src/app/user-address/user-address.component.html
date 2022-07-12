@@ -28,7 +28,7 @@
                     <br>
                     <label class="form-label" for="form9Example2">AddressLine-2</label>
                    
-                    <input type="text" [(ngModel)]="myaddress.addressLine2" [ngModelOptions]="{standalone:true}" #address2="ngModel" name="addressLine2" id="addressLine2" class="form-control input-custom" required/>
+                    <input type="text" [(ngModel)]="myaddress.addressLine2" [ngModelOptions]="{standalone:true}" #address2="ngModel" name="addressLine2" id="addressLine2" class="form-control input-custom" />
                     <span *ngIf="address2.touched && address2.invalid" class="text-danger">
                       Address2 is required
                     </span>
@@ -42,9 +42,9 @@
                     <br>
 
                     <label class="form-label" for="form9Example4">Zip</label>
-                    <input type="text" [(ngModel)]="myaddress.postalCode" [ngModelOptions]="{standalone:true}" #Zip="ngModel" name="postalCode" id="postalCode" class="form-control input-custom" minlength="6" maxlength="6" required/>
+                    <input type="number" [(ngModel)]="myaddress.postalCode" [ngModelOptions]="{standalone:true}" #Zip="ngModel" name="postalCode" id="postalCode" class="form-control input-custom" min="100000" max="999999" required/>
                     <span *ngIf="Zip.touched && Zip.invalid" class="text-danger">
-                      Inavalid Postal Code is required
+                       Invalid Postal Code is required
                     </span>
                     <br>
                     
@@ -56,9 +56,9 @@
                     <br>
                     
                     <label class="form-label" for="mobile">Phone</label>
-                    <input type="text" [(ngModel)]="myaddress.mobile" [ngModelOptions]="{standalone:true}" #phno="ngModel" name="mobile" id="mobile" class="form-control input-custom" minlength="10" required/>
+                    <input type="number" [(ngModel)]="myaddress.mobile" [ngModelOptions]="{standalone:true}" #phno="ngModel" name="mobile" id="mobile" class="form-control input-custom" min="6000000000" max="9999999999" required/>
                     <span *ngIf="phno.touched && phno.invalid" class="text-danger">
-                      Mobile number is required
+                      Mobile number must be 10 digits
                     </span>
                     <br>
 
@@ -72,23 +72,24 @@
 
                     <label class="form-label" for="mailId">Email</label>
                  
-                    <input type="email" [(ngModel)]="myaddress.mailId" [ngModelOptions]="{standalone:true}" #mail="ngModel" name="mailId"id="mailId" class="form-control input-custom" required/>
+                    <input type="email" [(ngModel)]="myaddress.mailId" [ngModelOptions]="{standalone:true}" #mail="ngModel" name="mailId"id="mailId" class="form-control input-custom"  pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" required/>
                    <span *ngIf="mail.touched && mail.invalid" class="text-danger">
-                      Mail Id is required
+                      Please enter valid mail id
                     </span>
                     <br>
 
               <h3>Payment Mode</h3>
+              
               <h4>
-               
+               COD
               </h4>
                 <hr>
               <div class="float-end ">
                 <!-- Submit button -->
-                <button type="submit" class="btn btn-primary btn-rounded" [disabled]="address.invalid" [disabled]="address2.invalid" [disabled]="phno.invalid"
-                [disabled]="mail.invalid"
+                <button type="submit" class="btn btn-primary btn-rounded" [disabled]="address.invalid || mail.invalid ||City.invalid ||country.invalid ||Zip.invalid || phno.invalid || name.invalid "
+                
         
-                  style="background-color:#0062CC;" (click)="goToOrders()">Confirm</button>
+                  style="background-color:#0062CC; margin-right: 20px; margin-bottom: 10px;" (click)="goToOrders()">Confirm</button>
               </div>
               <br>
             </fieldset>

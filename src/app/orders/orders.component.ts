@@ -21,8 +21,6 @@ export class OrdersComponent implements OnInit {
   
   showorders(){
     this.flag=true;
-    
-    
   }
   ngOnInit(): void {
     if(sessionStorage.getItem("UserId")!=undefined){
@@ -48,8 +46,6 @@ export class OrdersComponent implements OnInit {
     
     this.service.deleteitem(id,oid);
     location.reload();
-    
-    
     
   }
 

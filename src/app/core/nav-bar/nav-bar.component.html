@@ -4,8 +4,9 @@
     <nav class="my-2 my-md-0 me-md-3 text-uppercase" style="font-size: larger;">
         <a class="p-2 text-dark" routerLink="/main">Home</a>
         <a class="p-2 text-dark" routerLink="/Home">Shop</a>
-        <a class="p-2 text-dark" routerLink="/orders">My Orders</a>
         <a class="p-2 text-dark" href="#">Contact</a>
+        <a class="p-2 text-dark" routerLink="/orders"  *ngIf="!loggedInUser">My Orders</a>
+        
     </nav>
     <div class="d-flex align-items-center">
         <a class="position-relative">
