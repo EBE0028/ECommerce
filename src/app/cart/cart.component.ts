@@ -16,6 +16,7 @@ cart1:boolean;
 product:any;
 count:number=0;
 private loading: boolean=false;
+dataincart:boolean=false;
 
   constructor(public service:CartService,private route:Router ) { 
   }
@@ -37,10 +38,18 @@ getCartProduct()
       //Initiate Grandtotal to 0 because Every Time api is hitted it will add all subtotal getting in api
     this.GrandTotal=0;
     console.log(data);
-    this.datas=data; 
-    this.datas.forEach(element => {
+    if(Object.keys(data).length!=0)
+    {
+      this.dataincart=true
+      this.datas=data; 
+      this.datas.forEach(element => {
       this.GrandTotal=element.subTotal+this.GrandTotal
-    });
+      });
+    }
+    else{
+      this.dataincart=false;
+    }
+  
   },error(err){
  console.log(err)
   }});
