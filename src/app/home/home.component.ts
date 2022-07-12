@@ -30,8 +30,9 @@ export class HomeComponent implements OnInit {
       this.Product=data;
       this.Product2=this.Product.slice(-5,-1);
       
-      this.RandomProductId=Math.floor(Math.random() * (10 - 1 + 1) + 1);
+      
       this.exploreProduct=data;
+      this.RandomProductId=Math.floor(Math.random() * (this.exploreProduct.length - 1 + 1) + 1);
       this.exploreProduct=this.exploreProduct[this.RandomProductId];
     });
   }
