@@ -43,7 +43,7 @@ export class OrderAPIService {
    }
    goToBill(){
     console.log("Bill");
-    this.router.navigate(['/','bill']);
+    // this.router.navigate(['/','bill']);
   }
  // http://localhost:10649/Orders/GetById?id=1000
 

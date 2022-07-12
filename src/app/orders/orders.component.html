@@ -20,7 +20,7 @@
                                   <td>{{item.orderId}}</td>
                                   <td>{{item.userId}}</td>
                                   <td>{{item.totalAmount}}</td>
-                                  <td>{{item.deliveryDate}}</td>
+                                  <td>{{item.deliveryDate|date}}</td>
                                   <td>{{item.paymentType}}</td>
                                   <td>{{item.isCancelled}}</td>
                                   <td><button data-toggle="collapse" data-target="#demo" (click)="goTo(item.orderId)" >View</button>

@@ -89,7 +89,7 @@
                 <button type="submit" class="btn btn-primary btn-rounded" [disabled]="address.invalid || mail.invalid ||City.invalid ||country.invalid ||Zip.invalid || phno.invalid || name.invalid "
                 
         
-                  style="background-color:#0062CC; margin-right: 20px; margin-bottom: 10px;" (click)="goToOrders()">Confirm</button>
+                  style="background-color:#0062CC; margin-right: 20px; margin-bottom: 10px;" (click)="goToOrders()"  (click)="openModal()" data-toggle="modal" data-target="#exampleModalCenter">Confirm</button>
               </div>
               <br>
             </fieldset>
@@ -100,3 +100,20 @@
   </div>
   </div>
 </div>
+
+
+<div class="modal" tabindex="-1" role="dialog"  [ngStyle]="{'display':display}" style="background-color:rgba(0, 0, 0, 0.5);">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          
+            <div class="modal-body">
+              Thank You for your Order!!!
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-warning" data-dismiss="modal" (click)="onCloseHandled()" >Continue</button>
+              
+            </div>
+     </div>
+      </div>
+</div>
+

@@ -29,8 +29,16 @@ export class UserAddressComponent implements OnInit {
   constructor(private ser:OrderAPIService,private service:CartService,private route:Router) { }
   //private service!: OrderServiceService;
   message: string="";
-  userId:number=parseInt(sessionStorage.getItem("UserId"));
+  display="none";
 
+  userId:number=parseInt(sessionStorage.getItem("UserId"));
+  openModal() {
+    this.display = "block";
+  }
+  onCloseHandled() {
+    this.display = "none";
+    this.route.navigateByUrl("bill");
+  }
   public goToOrders(){
     console.log(this.myaddress)
     let resp=this.ser.addAddress(this.myaddress,this.userId);
@@ -38,7 +46,6 @@ export class UserAddressComponent implements OnInit {
       console.log(data.toString())
     this.message=data.toString();
 this.ser.message=this.message;
-   
       });
     
   this.ser.goToBill();
@@ -49,7 +56,6 @@ this.ser.message=this.message;
 
   ngOnInit(): void {
     if(this.service.isAdd)
-
     {
       this.ngOnInit()
     }

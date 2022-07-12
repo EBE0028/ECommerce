@@ -91,3 +91,28 @@
 #cartBtn :hover{
     color:black
 }
+#animation{
+    animation-duration: 2s;
+    animation-delay: 1s;
+    animation-iteration-count: infinite;
+
+}
+
+#product:hover{
+    animation: bounce 1s ;
+}
+
+@keyframes bounce {
+    20%,50%,80%,to{
+        transform: translateY(0);
+    }
+    40%{
+        transform: translateY(-30px);
+    }
+    70%{
+        transform: translateY(-15px);
+    }
+    90%{
+        transform: translateY(-4px);
+    }
+}
