@@ -12,8 +12,9 @@ export class ProductViewComponent implements OnInit {
 productsdisplay:any;
 datas:any;
 display="none";
+useridofloggeduser:any;
 
-  constructor(private route: ActivatedRoute,private service:ShopService,private ser:CartService) { }
+  constructor(private route: ActivatedRoute,private service:ShopService,private ser:CartService,private router:Router) { }
 
   ngOnInit(): void {
     const id = this.route.snapshot.paramMap.get('id');
@@ -30,10 +31,16 @@ display="none";
     this.display = "none";
   }
   AddProdtoCart(ProductId:number):void{
-    this.ser.AddCart(ProductId,1001).subscribe(data=>{
+    if(sessionStorage.getItem("UserId")!=undefined){
+      this.useridofloggeduser=sessionStorage.getItem("UserId");
+    this.ser.AddCart(ProductId,this.useridofloggeduser).subscribe(data=>{
       console.log(data);
       this.datas=data.result;
       })
   }
+  else{
+    this.router.navigateByUrl("login");
+  }
+}
 
 }
