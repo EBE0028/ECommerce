@@ -1,117 +1,112 @@
- <div style="background-color:lightskyblue;">
-<div class="card" style="margin-left: 4px;">
-  <div class="row">
-    <div class="col-lg-8">
-      <div class="p-5">
-        
-        <div class="container-fluid bg-3 text-center">
-            <h3>My Orders</h3>
-            <div class="row">
-                <div class="col-lg-8"></div>
-                <div class="col-sm-12 table-responsive" >
-                    <table class="table-borderless table-condensed table-hover" width="100%" style="background-color: aliceblue;border-radius: 10px;margin-bottom: 200px;">
-                        <thead>
-                            <tr>
-                                <th scope="col">OrderID</th>
-                                <th scope="col">UserID</th>
-                                <th scope="col">TotalAmount</th>
-                               <th scope="col">Expected Delivery Date</th>
-                                <th scope="col">Payment Method</th>
-                                <th scope="col">Status</th>
-                                <th scope="col">details</th>
-                            </tr>
-                        </thead>
-                        <tbody >
-                            <tr *ngFor="let item of orders" style="height: 70px;">
-                                <td>{{item.orderId}}</td>
-                                <td>{{item.userId}}</td>
-                                <td>{{item.totalAmount}}</td>
-                                <td>{{item.deliveryDate}}</td>
-                                <td>{{item.paymentType}}</td>
-                                <td>{{item.isCancelled}}</td>
-                                <td><button data-toggle="collapse" data-target="#demo" (click)="goTo(item.orderId)" >hi</button>
-                                 </td>
-                            </tr>
-                           
-                        </tbody> 
-                    </table>
-                </div>
-            </div>
-        </div>
-      </div>
-    </div>
-    <div class="container" style="margin-top: 40px;" *ngIf="flag">
-                
-        <div id="demo" class="collapse">
-            <div class="card card-stepper" style="border-radius: 16px;">
-                <div class="card-header p-4">
-                  <div class="d-flex justify-content-between align-items-center">
-                    <div>
-                      <p class="text-muted mb-2"> Order ID <span class="fw-bold text-body">{{items.orderId}}</span></p>
-                      <p class="text-muted mb-0"> Place On <span class="fw-bold text-body">{{orderon}}</span> </p>
-                      <h6 class="mb-0">View Details </h6>
-                    </div>
-                  </div>
-                </div>
-                <div class="card-body p-4" style="margin-left: 790px;">
-                  <div class="d-flex flex-row mb-4 pb-2">
-                    <div class="flex-fill">
-                      <h5 class="bold">{{items.productName}}</h5>
-                      <p class="text-muted"> Qt: {{items.quantity}}</p>
-                      <h4 class="mb-3"> $ {{items.subTotal}}<span class="small text-muted"> via {{items.paymentType}} </span></h4>
-                      
-                    </div>
-                    <div >
-                      <img class="align-self-center img-fluid" style="border-radius: 10px;"
-                        src={{images.imageUrl}} width="250">
-                    </div>
-                  </div>
-                  <hr>
-                  <div class="horizontal-timeline">
-
-                    <ul class="list-inline items d-flex justify-content-between">
-                      <li class="list-inline-item items-list">
-                        <p class="py-1 px-2 rounded text-white" style="background-color: gold; border-radius: 5px;margin-right: 5px;">Ordered</p>
-                        
-                      </li>
-                      <li class="list-inline-item items-list">
-                        <p class="py-1 px-2 rounded text-white" style="background-color: #f37a27;border-radius: 5px;">Shipped</p>
-                          
-                      </li>
-                      <li class="list-inline-item items-list">
-                        <p class="py-1 px-2 rounded text-white" style="background-color: #f37a27;border-radius: 5px;">On the way
-                        </p>
-                      </li>
-                      <li class="list-inline-item items-list text-end">
-                        <p class="py-1 px-2 rounded text-white" style="background-color:aquamarine;border-radius: 5px;margin-right: -2px;">Delivered</p>
-                      </li>
-                    </ul>
-  
+<div style="background-color:lightskyblue;">
+  <div class="card" style="margin-left: 4px;">
+    <div class="row">
+      <div class="col-lg-8">
+              <h3>My Orders</h3>    
+                      <table class="table-borderless table-condensed table-hover" width="100%" style="background-color: aliceblue;border-radius: 10px;margin-bottom: 200px;">
+                          <thead>
+                              <tr>
+                                  <th scope="col">OrderID</th>
+                                  <th scope="col">UserID</th>
+                                  <th scope="col">TotalAmount</th>
+                                 <th scope="col">Expected Delivery Date</th>
+                                  <th scope="col">Payment Method</th>
+                                  <th scope="col">Status</th>
+                                  <th scope="col">details</th>
+                              </tr>
+                          </thead>
+                          <tbody >
+                              <tr *ngFor="let item of orders" style="height: 70px;">
+                                  <td>{{item.orderId}}</td>
+                                  <td>{{item.userId}}</td>
+                                  <td>{{item.totalAmount}}</td>
+                                  <td>{{item.deliveryDate}}</td>
+                                  <td>{{item.paymentType}}</td>
+                                  <td>{{item.isCancelled}}</td>
+                                  <td><button data-toggle="collapse" data-target="#demo" (click)="goTo(item.orderId)" >View</button>
+                                   </td>
+                              </tr>
+                             
+                          </tbody> 
+                      </table>
+          </div>
+          <div class="col-lg-4" >
+                  <div class="container" style="margin-top: 20px;" *ngIf="flag">
                   
-                
-                <div class="card-footer p-4">
-                  <div class="d-flex justify-content-between">
-                    <h5 class="fw-normal mb-0"><a href="#!">Track</a></h5>
-                    <div class="border-start h-100"></div>
-                    <h5 class="fw-normal mb-0"><button  (click)="deleteitem(items.id,items.orderId)">Cancel</button></h5>
-
-                    <div class="border-start h-100"></div>
-                    <h5 class="fw-normal mb-0"><a href="#!">Pre-pay</a></h5>
-                    <div class="border-start h-100"></div>
-                    <h5 class="fw-normal mb-0"><a href="#!" class="text-muted"><i class="fas fa-ellipsis-v"></i></a>
-                    </h5>
+                    <div id="demo" class="collapse ">
+                        
+                            <div class="card-header">
+                               <div>
+                                  
+                                </div>
+                              </div>
+                            </div>
+                            <div class="card-body p-4">
+                              <div class="d-flex flex-row mb-4 pb-2">
+                               
+                                  
+                                <hr>
+                                <div >
+                                  <img class="align-self-center img-fluid" style="border-radius: 10px;"
+                                    src={{images.imageUrl}} width="250">
+                                </div>
+                              </div>
+                              <hr>
+                              <div class="horizontal-timeline">
+            
+                                <ul class="list-inline items d-flex justify-content-between" style="font-size: small">
+                                  <li class="list-inline-item items-list">
+                                    <p class="py-1 px-2 rounded text-white" style="background-color: gold; border-radius: 5px;margin-right: 5px;">Ordered</p>
+                                    
+                                  </li>
+                                  <li class="list-inline-item items-list">
+                                    <p class="py-1 px-2 rounded text-white" style="background-color: #f37a27;border-radius: 5px;">Shipped</p>
+                                      
+                                  </li>
+                                  <li class="list-inline-item items-list">
+                                    <p class="py-1 px-2 rounded text-white" style="background-color: #f37a27;border-radius: 5px;">On the way
+                                    </p>
+                                  </li>
+                                  <li class="list-inline-item items-list text-end">
+                                    <p class="py-1 px-2 rounded text-white" style="background-color:aquamarine;border-radius: 5px;margin-right: -2px;">Delivered</p>
+                                  </li>
+                                </ul>
+              
+                              
+                            
+                            <div class="card-footer p-4">
+                              <h5 class="bold">{{items.productName}}</h5><br>
+                                  <p class="text-muted"> Qt: {{items.quantity}}</p><br>
+                                  <h4 class="mb-3"> $ {{items.subTotal}}<span class="small text-muted"> via COD </span></h4>
+                                  
+                              <p class="text-muted mb-2"> Order ID <span class="fw-bold text-body">{{items.orderId}}</span></p><br>
+                                  
+                                   
+                              <div class="d-flex justify-content-between">
+                                <a href="#!">Track</a>
+                                <div class="border-start h-100"></div>
+                                <button  (click)="deleteitem(items.id,items.orderId)">Cancel</button>
+            
+                                <div class="border-start h-100"></div>
+                                <a href="#!">Pre-pay</a>
+                                <div class="border-start h-100"></div>
+                                <h5 class="fw-normal mb-0"><a href="#!" class="text-muted"><i class="fas fa-ellipsis-v"></i></a>
+                                </h5>
+                              </div>
+                            </div>
+                            
+                        </div>
+                    </div>
+                    
                   </div>
-                </div>
-                </div>
-            </div>
-        </div>
+          </div>
         
-    </div>
+      </div>
+  
+  
+  
+      
+  
+      
+    
   </div>
-</div>
-
-
-
-
-
-

@@ -1,9 +1,10 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Address } from '../Address';
+import { CartService } from '../cart.service';
 import { OrderAPIService } from '../order-api.service';
-import{FormGroup,FormControl,Validators} from '@angular/forms'
+import { OrderServiceService } from '../order-service.service';
+
 @Component({
   selector: 'app-user-address',
   templateUrl: './user-address.component.html',
@@ -20,23 +21,41 @@ export class UserAddressComponent implements OnInit {
         country :  "" ,
         mobile :  "" ,
         mailId :  "" ,
-        contactPerson :  ""
+        contactPerson :  "",
+        userId:0
       };
-  message: Object | undefined;
+      public response:string="";
   
-  constructor(private ser:OrderAPIService,private router:Router) { }
-  public goToOrders(){
+  constructor(private ser:OrderAPIService,private service:CartService,private route:Router) { }
+  //private service!: OrderServiceService;
+  message: string="";
+  userId:number=parseInt(sessionStorage.getItem("UserId"));
 
-    console.log("OKKK");
-    let resp=this.ser.addAddress(this.myaddress);
-    resp.subscribe((data)=>this.message=data);
-    this.router.navigate(['/','orders']);
+  public goToOrders(){
+    console.log(this.myaddress)
+    let resp=this.ser.addAddress(this.myaddress,this.userId);
+    resp.subscribe(data=>{
+      console.log(data.toString())
+    this.message=data.toString();
+this.ser.message=this.message;
+   
+      });
+    
+  this.ser.goToBill();
+  this.service.isAdd=false;
+   
   }
  
 
   ngOnInit(): void {
-    
-  
+    if(this.service.isAdd)
+
+    {
+      this.ngOnInit()
+    }
+else{
+this.route.navigateByUrl("Cart")
+}
   }
 
 }

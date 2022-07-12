@@ -13,7 +13,9 @@ export class CartService {
   constructor(private http:HttpClient) { }
   result:any;
   req="https://localhost:44325/api/Carts"
-  iscart:boolean=false;
+  public iscart:boolean=false;
+  public isAdd:boolean=false;
+  public isBill:boolean=false;
 
   GetcartforUser(userid:any){
     return this.http.get("https://localhost:44325/api/Carts?userId="+userid);

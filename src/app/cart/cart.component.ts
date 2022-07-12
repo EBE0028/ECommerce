@@ -74,5 +74,9 @@ Removeitem(PdtId : number):void{
    //window.location.reload();
 }
 
-
+goToaddress(){
+    this.service.isAdd=true
+  this.route.navigate(['/','address'])
+  
+}
 }

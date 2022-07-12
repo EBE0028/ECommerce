@@ -66,7 +66,7 @@ export class LoginComponent implements OnInit {
   redirectDashboard():void{
     console.log(sessionStorage.getItem("UserId"))
     if(sessionStorage.getItem("UserId")!=undefined){
-      this.route.navigateByUrl("main");
+      this.route.navigateByUrl("Home");
     }
   }
   closeToast(){

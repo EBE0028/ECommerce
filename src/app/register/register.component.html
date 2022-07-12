@@ -68,26 +68,9 @@
 
                 <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4" >
                     <button type="submit" style="background-color: blueviolet;"  class="btn btn-lg text-light" [disabled]="name.invalid || mail.invalid || mobile.invalid || pwd.invalid"
-                        (click)="addUser()" (click)="openModal()" data-toggle="modal" data-target="#exampleModalCenter">Register</button>
+                        (click)="addUser()">Register</button>
                 </div>
             </form>
         </div>
     </div>
 </div>
-
-<div class="modal" tabindex="-1" role="dialog"  [ngStyle]="{'display':display}" style="background-color:rgba(0, 0, 0, 0.5);">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-          <div class="modal-content">
-            
-              <div class="modal-body">
-                {{registeredMessage}}
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-warning" data-dismiss="modal" (click)="onCloseHandled()" >Continue</button>
-                
-              </div>
-       </div>
-        </div>
-</div>
-
-

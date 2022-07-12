@@ -42,7 +42,7 @@
                     <br>
 
                     <label class="form-label" for="form9Example4">Zip</label>
-                    <input type="number" [(ngModel)]="myaddress.postalCode" [ngModelOptions]="{standalone:true}" #Zip="ngModel" name="postalCode" id="postalCode" class="form-control input-custom" min="100000" max="999999" required/>
+                    <input type="text" [(ngModel)]="myaddress.postalCode" [ngModelOptions]="{standalone:true}" #Zip="ngModel" name="postalCode" id="postalCode" class="form-control input-custom" min="100000" max="999999" required/>
                     <span *ngIf="Zip.touched && Zip.invalid" class="text-danger">
                        Invalid Postal Code is required
                     </span>
@@ -56,7 +56,7 @@
                     <br>
                     
                     <label class="form-label" for="mobile">Phone</label>
-                    <input type="number" [(ngModel)]="myaddress.mobile" [ngModelOptions]="{standalone:true}" #phno="ngModel" name="mobile" id="mobile" class="form-control input-custom" min="6000000000" max="9999999999" required/>
+                    <input type="text" [(ngModel)]="myaddress.mobile" [ngModelOptions]="{standalone:true}" #phno="ngModel" name="mobile" id="mobile" class="form-control input-custom" min="6000000000" max="9999999999" required/>
                     <span *ngIf="phno.touched && phno.invalid" class="text-danger">
                       Mobile number must be 10 digits
                     </span>

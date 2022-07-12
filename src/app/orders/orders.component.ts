@@ -24,7 +24,7 @@ export class OrdersComponent implements OnInit {
   }
   ngOnInit(): void {
     if(sessionStorage.getItem("UserId")!=undefined){
-    let resp=this.service.getProducts();
+    let resp=this.service.getOrders();
     resp.subscribe((data)=>
       this.orders=data);
     }

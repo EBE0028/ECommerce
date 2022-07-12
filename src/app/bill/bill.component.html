@@ -1,0 +1,137 @@
+<!-- 
+<div >
+    <div class="text-center" style="margin: 20px;">
+    <button (click)="showOrderId()">ShowOrderId</button>
+    </div>
+    <div *ngIf="flag_show">
+    <div class="text-center" style="margin-left: 525px;margin-right: 525px;">
+    <form class="navbar-form navbar-right" role="search" action="search" method="post">
+        <div class="form-group input-group">
+            <input type="text" value={{orders.orderId}} name="orderId" id="orderId" class="form-control input-custom" class="form-control" placeholder="Search.." name="search">
+            
+            <span class="input-group-btn">
+                <button class="btn btn-default" type="submit"  (click)="showBill(orders.deliveryAddress,orders.orderId)">
+    Check
+                    </button>
+            </span>
+        </div>
+    </form>
+    </div>
+    </div>-->
+    
+    <div *ngIf="flag_get" style="margin: 360px; margin-top: 80px;"> 
+    <br>
+    <body style="background-color:lightblue;border-radius: 15px">
+        <h1 class="text-center" style="margin-top: 10px;">Thank You For Your Purchase</h1>
+        <div style="margin: 10px;">
+            <br>
+        <h3 class="text-center" style="background-color: azure ;border-radius: 15px;">AVON Store</h3>
+        <hr>
+            <table style="margin-left: 10%; font-size: medium;">
+                <tr>
+                    <td>
+                        Name     
+                    </td>
+                    <td>:</td>
+                    <td>{{userAddress.contactPerson}} </td>
+                </tr>
+                <tr>
+                    <td>MailId</td>
+                    <td>:</td>
+                    <td>{{userAddress.mailId}}</td>
+                </tr>
+                <tr>
+                    <td>Mobile Number</td>
+                    <td>:</td>
+                    <td>{{userAddress.mobile}}</td>
+                </tr>
+                <tr>
+                    <td>Order Date</td>
+                    <td>:</td>
+                    <td>{{orders.orderedOn}}</td>
+                </tr>
+                <tr>
+                    <td>Payment Method</td>
+                    <td>:</td>
+                    <td> {{PM}}</td>
+                </tr>
+                <tr>
+                    <td>Expected Delivery</td>
+                    <td>:</td>
+                    <td>{{orders.deliveryDate}}</td>
+                </tr>
+                <tr>
+                    <td>
+                        City
+                    </td>
+                    <td>:</td>
+                    <td>{{userAddress.city}}</td>
+                </tr>
+                <tr>
+                    <td>Address</td>
+                    <td>:</td>
+                    <td>{{userAddress.addressLine1}} -{{userAddress.postalCode}}</td>
+                </tr>
+                
+                <tr>
+                    <td>Country</td>
+                    <td>:</td>
+                    <td>{{userAddress.country}}</td>
+                </tr>
+            </table>
+        
+        
+    
+        <hr>
+        <br>
+        <div class="text-center">
+        <table id="customers" border="1px" style="margin-left: 130px;">
+    
+            <thead>
+                <tr>
+                    <th scope="col">Product Name</th>
+                    <th scope="col"><i class="fa fa-inr"></i> price</th>
+                    <th scope="col">Quantity</th>
+                    <th scope="col">Sub Total</th>
+                </tr>
+            </thead>
+            <tbody>
+    
+                <tr *ngFor="let item of oItems">
+                    
+                        <td id="middle">
+                           {{item.productName}}
+                        </td>
+                        <td id="middle">
+                            <i class="fa fa-inr"></i>
+                            {{item.price}}
+                        
+                        </td>
+                        <td id="middle">
+                            {{item.quantity}}
+                        
+                        </td>
+                        <td id="middle">
+                            <i class="fa fa-inr"></i>
+                            {{item.subTotal}}
+                        </td>
+                        <!-- <td id="middle"><a asp-controller="Cart" asp-action="Remove" asp-route-id="@item.Id" class="btn btn-info">Remove <i class='fas fa-trash-alt'></i></a></td> -->
+    
+                    
+                </tr>
+    
+        </table>
+        <br>
+         <h3>Total:{{GrandTotal}} </h3> 
+        <a (click)="MyOrders()" ><button class="button left-button">Continue Shopping</button></a>
+        <a onclick="window.print();"><button class="button right-button" style="margin: 20px;">Print</button></a>
+        <a (click)="closeNow()"><button class="button right-button">Close</button></a>
+       
+        <br><br><br><br>
+        </div>
+        </div>
+    </body>
+        
+   
+    </div>
+   <!--   </div> -->

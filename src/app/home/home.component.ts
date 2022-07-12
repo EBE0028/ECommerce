@@ -19,8 +19,6 @@ export class HomeComponent implements OnInit {
   Product2:any[]=[];
   datas:any;
   display: string="none";
-  exploreProduct:any;
-  RandomProductId:number;
   
   constructor(private router:Router, private service:CartService,private store:ShopService) { }
 
@@ -29,10 +27,7 @@ export class HomeComponent implements OnInit {
     this.store.getProducts().subscribe(data=>{
       this.Product=data;
       this.Product2=this.Product.slice(-5,-1);
-      
-      this.RandomProductId=Math.floor(Math.random() * (10 - 1 + 1) + 1);
-      this.exploreProduct=data;
-      this.exploreProduct=this.exploreProduct[this.RandomProductId];
+      sessionStorage.setItem("sample",'starting');
     });
   }
 
@@ -44,9 +39,6 @@ export class HomeComponent implements OnInit {
       this.datas=data.result;
       })
   }
-
-  
-  
   else{
     this.router.navigateByUrl("login");
   }

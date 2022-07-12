@@ -54,7 +54,7 @@
 
     <!-- Clothing session brands display -->
     <div>
-        <h2 style="padding-left:3%;color:darkgray;" class="animate__animated animate__infinite animate__pulse" id="animation">Top Clothing Brands
+        <h2 style="padding-left:3%;color:grey;">Top Clothing Brands
         </h2>
         <br/>
         <div class="row" style="padding-left:3%">
@@ -109,63 +109,11 @@
 
     </div>
 
-    <!-- explore product session  -->
     <br/>
-    <div *ngIf="exploreProduct!=null" style="padding-left:3%;">
-        <h3 style="text-align:center;font-family: 'Arima', cursive;color:blueviolet" class="animate__animated animate__infinite animate__rubberBand" id="animation">🔥 Trendy product made with love from<strong>ShopX </strong>💗</h3>
-        <section class="py-5">
-            <div class="container px-4 px-lg-5 my-5">
-                <div class="row gx-4 gx-lg-5 align-items-center">
-                    <div class="col-md-6"><img class="card-img-top mb-5 mb-md-0" src="{{exploreProduct.imageUrl}}" alt="..."/></div>
-                    <div class="col-md-6" style="font-family: 'Nunito', sans-serif;">
-                        <h1 class="display-5 fw-bolder">{{exploreProduct.productName}}</h1>
-                        <div class="fs-5 mb-5">
-                            <span>
-                                <b style="font-size:20px;color: green;">{{exploreProduct.price|currency:'INR':'symbol-narrow'}}&nbsp;&nbsp;</b>
-                            </span>
-                            <span style="text-decoration:line-through;color: red;">{{exploreProduct.price*0.01+exploreProduct.price|currency:'INR':'symbol-narrow'}}</span>
 
-                        </div>
-                        <p class="lead" style="font-family: 'Arima', cursive;">{{exploreProduct.description}}</p>
-                        <div class="d-flex">
-
-                            <a (click)="openModal()" (click)="AddProdtoCart(exploreProduct.productId) " data-toggle="modal" data-target="#exampleModalCenter">
-                                <button class="btn btn-outline-dark flex-shrink-0" type="button">
-                                    <i>
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart-fill" viewbox="0 0 16 16">
-                                            <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
-                                        </svg>
-                                    </i>
-                                    Add to cart
-                                </button>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </div>
-    <div class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display':display}" style="background-color:rgba(0, 0, 0, 0.5);">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLongTitle">
-                        <div class="fa fa-shopping-cart mr-2"></div>Cart Status</h5>
-                </div>
-                <div class="modal-body">
-                    {{datas}}
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-warning" data-dismiss="modal" (click)="onCloseHandled()">Close</button>
-
-                </div>
-            </div>
-        </div>
-    </div>
-    <br/>
     <!-- Electronics session brands display -->
     <div>
-        <h1 style="padding-left:3%;color:darkgray;"  class="animate__animated animate__infinite animate__headShake" id="animation">Top Electronics Brands</h1>
+        <h1 style="padding-left:3%;color:grey;">Top Electronics Brands</h1>
         <br/>
         <div class="row" style="padding-left:3%">
             <div class="col-sm-2 col-lg-2 col-md-2">
@@ -219,27 +167,25 @@
     <br/>
 
     <!-- Latest Products -->
-    <div style="padding-left:3%" >
-        <h2 style="color:grey;"class="animate__animated animate__infinite animate__shakeX" id="animation">Latest Products</h2>
+    <div style="padding-left:3%">
+        <h2 style="color:grey;">Latest Products</h2>
         <br/>
-        <div class="row" style="padding-left:5%" >
-            <a>
+        <div class="row" style="padding-left:5%">
+            <a >
                 <div class="col-lg-3" *ngFor="let product of Product2 " id="card">
 
-                    <div class="card " style="width: 20rem;height: 28rem;" id="product">
+                    <div class="card " style="width: 20rem;">
                         <img class="card-img-top" src="{{product.imageUrl}}" alt="{{product.productName}}" height="50%" width="100%">
                         <div class="card-body">
-                            <a (click)="Viewproddetails(product.productId)">
+                            <a href="/Home">
                                 <h5 class="card-title text-uppercase" style="color:darkblue">
                                     <strong>{{product.productName}}</strong>
                                 </h5>
                             </a>
-                            <span class="mb-2" style="color:green;font-size: large;"><strong>{{product.price | currency:'INR':'symbol-narrow'}}</strong>&nbsp;&nbsp;</span>
-                            <span style="text-decoration:line-through;color: red;">{{product.price*0.01+product.price|currency:'INR':'symbol-narrow'}}</span>
-                            <br/>
+                            <span class="mb-2" style="color:#A149FA">{{product.price | currency}}</span>
+                            
 
-
-                            <button (click)="AddProdtoCart(product.productId)" (click)="openModal()" class="fa-solid fa-cart-shopping" style="color:#FFD32D;font-size: 20px;border: none;background-color: white;" id="cartBtn"></button>
+                            <button (click)="AddProdtoCart(product.productId)" (click)="openModal()"  class="fa-solid fa-cart-shopping" style="color:#FFD32D;font-size: 20px;border: none;background-color: white;" id="cartBtn"></button>
 
                         </div>
                     </div>
@@ -253,7 +199,7 @@
     <br/>
 
     <!-- Services details -->
-    <div style="background-color:#764AF1;padding-left:15%">
+    <div style="background-color:red;padding-left:15%">
         <br/>
         <div class="row" style="margin-left: auto;align-content: center;padding: 10px;padding-left:10px">
             <div class="col-lg-3 col-md-4 col-sm-6" id="Feature">
@@ -274,21 +220,21 @@
         <br/>
     </div>
 
-    <div class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display':display}" style="background-color:rgba(0, 0, 0, 0.5);">
+    <div class="modal" tabindex="-1" role="dialog"  [ngStyle]="{'display':display}" style="background-color:rgba(0, 0, 0, 0.5);">
         <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
+              <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLongTitle">
-                        <div class="fa fa-shopping-cart mr-2"></div>Cart Status</h5>
-                </div>
-                <div class="modal-body">
+                    <h5 class="modal-title" id="exampleModalLongTitle" ><div class="fa fa-shopping-cart mr-2"></div>Cart Status</h5>
+                  </div>
+                  <div class="modal-body">
                     {{datas}}
-                </div>
-                <div class="modal-footer">
+                  </div>
+                  <div class="modal-footer">
                     <button type="button" class="btn btn-warning" data-dismiss="modal" (click)="onCloseHandled()">Close</button>
-
-                </div>
+                    
+                  </div>
+           </div>
             </div>
-        </div>
     </div>
+
 </body>
