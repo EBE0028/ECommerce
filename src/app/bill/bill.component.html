@@ -35,30 +35,34 @@
 	<script src="https://2-22-4-dot-lead-pages.appspot.com/static/lp918/min/html5shiv.js"></script>
 </head>
 <body>
-	<header class="site-header" id="header">
 		<h1 class="site-header__title" data-lead-id="site-header-title">THANK YOU!</h1>
-	</header>
+	
 
 	<div class="main-content">
 		<i class="fa fa-check main-content__checkmark" id="checkmark"></i>
 		<p class="main-content__body" data-lead-id="main-content-body">Thanks a bunch for filling that out. It means a lot to us, just like you do! We really appreciate you giving us a moment of your time today. Thanks for being you.</p>
 	</div>
+    <br>
+
 
 	
 </body>
-
-    <div class="text-center" style="margin: 20px;">
-    <button (click)="showOrderDetails()">ShowBill</button>
+<div class="row">
+    <div class="col-4" style="margin: 20px;">
+    <button class="btn btn-dark" (click)="showOrderDetails()">ShowBill</button>
+    
     </div>
     
-    <div class="text-center" style="margin: 20px;">
-        <button (click)="MyOrders()">MyOrders</button>
+    <div class="col-3"style="margin: 20px;">
+        <button class="btn btn-dark" (click)="MyOrders()">MyOrders</button>
         </div>
         
-    <div class="text-center" style="margin: 20px;">
-        <button (click)="ContShopping()">Continue Shopping</button>
+    <div class="col-3" style="margin: 20px;">
+        <button class="btn btn-dark" routerLink="/Home">Continue Shopping</button>
         </div>
     </div>
+</div>
+<br>
     
     <div *ngIf="flag_show" style="margin: 360px; margin-top: 80px;"> 
     <br>
@@ -66,7 +70,7 @@
         <h1 class="text-center" style="margin-top: 10px;">Thank You For Your Purchase</h1>
         <div style="margin: 10px;">
             <br>
-        <h3 class="text-center" style="background-color: azure ;border-radius: 15px;">AVON Store</h3>
+        <h3 class="text-center" style="background-color: azure ;border-radius: 15px;">ShopX Store</h3>
         <hr>
             <table style="margin-left: 10%; font-size: medium;">
                 <tr>
@@ -164,8 +168,6 @@
         </table>
         <br>
          <h3>Total:{{GrandTotal}} </h3> 
-        <a (click)="MyOrders()" ><button class="button left-button">Continue Shopping</button></a>
-        <a onclick="window.print();"><button class="button right-button" style="margin: 20px;">Print</button></a>
         <a (click)="closeNow()"><button class="button right-button">Close</button></a>
        
         <br><br><br><br>
@@ -176,24 +178,18 @@
    
     </div>
     
-    <h4>Recommended Products</h4>
-			<div class="a-carousel-col a-carousel-center">
-				<div class="a-carousel-viewport" id="anonCarousel2" style="height: 406px;">
-					<ul class="a-carousel" role="list"id="horizontal-list">
+    <h4><strong style="font-family:Georgia, 'Times New Roman', Times, serif">Recommended Products</strong></h4>
+    <br>
     
-                        <div  class="col-4 mb-4" *ngFor="let product of products2 ">
-    
-                        <div class="a-carousel-card" style="width: 160px; margin-left: 44px;" role="listitem" aria-setsize="43" aria-posinset="1" aria-hidden="false">
-                            <div class="p13n-sc-uncoverable-faceout">
-                              <app-product-view [product]="product"></app-product-view>
-                                    
-                        </div>
-                        </div>
-                        </div>
-                    </ul>
-                </div>
-            </div>
+    <section class="col-12">
+    <div class="row">
+        <div  class="col-3 mb-4" *ngFor="let product of products2">
+            <app-product-item [product]="product"></app-product-item>
+        </div>
+    </div>
+    </section>  
 <div >
+    
     
 
 </div>
@@ -204,3 +200,9 @@
 	</footer>
 </div>
    <!--   </div> -->
+
+
+
+   
+
+   

@@ -13,10 +13,23 @@
             <i class="fa fa-shopping-cart fa-2x mr-5 " style="color:blueviolet;" routerLink="/Cart"></i>
             <!-- <div class="cart-no">{{basket$}}</div> -->
         </a>
-
+        <a class="btn btn-outline-secondary mr-2"  *ngIf="!loggedInUser">Hello {{currentUser}} 😊</a>
         <a class="btn btn-outline-secondary mr-2" (click)="logout()" *ngIf="!loggedInUser">Logout</a>
         <a class="btn btn-outline-secondary mr-2" routerLink="/login" *ngIf="loggedInUser">Login</a>
         
         <a class="btn btn-outline-secondary mr-3" routerLink="/register" *ngIf="loggedInUser">Sign up</a>
     </div>
 </header> 
+
+
+<div class="border border-dark" style="position:fixed;right:50%;top:50%;z-index:1;" *ngIf="show==true">
+    <div class="toast-header" style="color: blueviolet;">
+      <i class="bi bi-bell"></i>
+      <strong class="me-auto"> Message </strong>
+      <button type="button" class="btn-close" (click)="closeToast()"></button>
+    </div>
+    <div class="toast-body">
+      <p class="text-danger" >Server is facing some issues. Unable to reach.</p>
+      
+    </div>
+  </div>

@@ -18,11 +18,13 @@ export class UserService {
   }
 
   getUsers(): Observable<User[]> {
-    return this.http.get<User[]>(this.url);
+    return this.http.get<User[]>(this.url).pipe(catchError(this.handleError));
   }
-
+  getUserName(id:any): Observable<any> {
+    return this.http.get<any>(this.url+"GetUsername/" +id);
+  }
   getUserById(id:any): Observable<User> {
-    return this.http.get<User>(this.url + id);
+    return this.http.get<User>(this.url + id).pipe(catchError(this.handleError));
   }
 
   updateUser(a: User): Observable<any> {
@@ -48,15 +50,15 @@ export class UserService {
         'Access-Control-Allow-Origin': '*',
         'Access-Control-Allow-Method': '*'
       })
-    });
+    }).pipe(catchError(this.handleError));
   }
 
   checkCredentials(mail:string, pwd:string): Observable<string> {
-    return this.http.get(this.url + mail + "/" + pwd, {responseType:'text'});
+    return this.http.get(this.url + mail + "/" + pwd, {responseType:'text'}).pipe(catchError(this.handleError));
   }
 
   checkUserAndSendOTP(mail:string): Observable<string> {
-    return this.http.get(this.url + "ForgotPassword/" + mail, {responseType:'text'});
+    return this.http.get(this.url + "ForgotPassword/" + mail, {responseType:'text'}).pipe(catchError(this.handleError));
   }
 
   changePassword(mail:string,pwd:string):any{
@@ -77,7 +79,7 @@ export class UserService {
     }
     sessionStorage.setItem("response", "serverdown");
     sessionStorage.setItem("show", "1");
-    location.reload();
+    // location.reload();
     // Return an observable with a user-facing error message.
     return throwError(() => new Error('Something bad happened; please try again later.'));
   }
@@ -85,7 +87,7 @@ export class UserService {
   logout(id:string):Observable<string> {
     console.log("Logout called in User service");
     console.log(this.url +"Logout/"+ id);
-    return this.http.get(this.url + "Logout/"+ id,{responseType:'text'});
+    return this.http.get(this.url + "Logout/"+ id,{responseType:'text'}).pipe(catchError(this.handleError));
   }
   
 }

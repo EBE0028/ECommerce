@@ -11,24 +11,32 @@ import { UserService } from 'src/app/user.service';
 })
 export class NavBarComponent implements OnInit {
   basket$:any;
-  currentUser$:string;
+  currentUser:any;
   constructor(private service:CartService,private route:Router,private userserv:UserService) { }
   datas:any;
   GrandTotal:number=0;
   loggedInUser:boolean=false;
+  show:boolean=false;
   ngOnInit(): void {
-    this.currentUser$=null;
     console.log("checking nav bar reload");
-    // this.service.Getcartcount(1000).subscribe(data=>{
-    //   console.log(data);
-    //   this.basket$=data;
-    // })
+    if(sessionStorage.getItem("response")=="serverdown"){
+      this.show=true;
+      sessionStorage.clear();
+    }
+   else{
     if(sessionStorage.getItem("UserId")!=undefined){
       this.loggedInUser=false;
+      this.userserv.getUserById(sessionStorage.getItem("UserId")).subscribe(data=>{this.currentUser=data.firstName});
+      
     }
     else{
       this.loggedInUser=true;
     }
+   }
+  }
+  closeToast(){
+    this.show=false;
+    
   }
   logout():void{
     console.log(sessionStorage.getItem("UserId"));

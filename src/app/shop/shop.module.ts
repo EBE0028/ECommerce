@@ -9,6 +9,7 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 
 
+
 @NgModule({
   declarations: [
     ShopComponent,
@@ -19,6 +20,6 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
     Ng2SearchPipeModule,
     FormsModule,
     CommonModule, SharedModule,
-  ], exports: [ShopComponent]
+  ], exports: [ShopComponent,ProductItemComponent]
 })
 export class ShopModule { }
